@@ -141,6 +141,7 @@ function TurnTable(props: {
     if (props.peakHoursActive) buildTimeList(displayedTimeList);
     return true;
   }, [displayedTimeList]);
+
   return (
     <div className="turn-table-component">
       <table className="turn-table">

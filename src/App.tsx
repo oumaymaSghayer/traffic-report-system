@@ -1,11 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Button from "@mui/material/Button";
 import { TrafficInterface } from "./interfaces/traffic.interface";
-import axios from "axios";
 import Header from "./components/Header";
 import DataTable from "./components/DataTable";
+
+const REACT_APP_SERVER_URL: string | undefined =
+  process.env["REACT_APP_SERVER_URL"]!;
 
 function App() {
   const turnsCols = ["T", "L", "R", "U"];
@@ -61,7 +62,7 @@ function App() {
   }, []);
 
   const loadData = async () => {
-    const response = await fetch(`http://localhost:3000/data`);
+    const response = await fetch(`${REACT_APP_SERVER_URL}`);
     const data: TrafficInterface[] = await response.json();
     setTrafficData(data);
     return data;
