@@ -79,19 +79,25 @@ function App() {
 
   return (
     <div className="App">
-      <Header
-        trafficData={trafficData}
-        displayedData={displayedData}
-        handleDisplayedData={handleDisplayedData}
-        handlePeakHourChange={handlePeakHourChange}
-      />
-      <DataTable
-        roadTypes={roadTypes}
-        amTime={amTime}
-        pmTime={pmTime}
-        displayedData={displayedData}
-        peakHoursActive={peakHoursActive}
-      />
+      {trafficData.length === 0 ? (
+        <p>Could not load data</p>
+      ) : (
+        <div>
+          <Header
+            trafficData={trafficData}
+            displayedData={displayedData}
+            handleDisplayedData={handleDisplayedData}
+            handlePeakHourChange={handlePeakHourChange}
+          />
+          <DataTable
+            roadTypes={roadTypes}
+            amTime={amTime}
+            pmTime={pmTime}
+            displayedData={displayedData}
+            peakHoursActive={peakHoursActive}
+          />
+        </div>
+      )}
     </div>
   );
 }
